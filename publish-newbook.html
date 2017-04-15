@@ -47,26 +47,34 @@
             <!-- 输入简介 -->
             <div class="uploadinfo">
                 <textarea name="" placeholder="说点什么吧"></textarea>
-                <div class="uploadimg" id="uploadimg">
-                    <input type="file" name="img" />
-                    <span class="iconfont icon-add"></span>
-                    <p>上传封面</p>
+                <div class="uploadimg">
+                    <input type="file" id="upload" class="upload" capture="camera" accept="image/*" />
+                    <!-- 无图片时候默认样式 -->
+                    <div class="add" id="add">
+                        <span class="iconfont icon-add"></span>
+                        <p>上传封面</p>
+                    </div>
+                    <!-- 图片预览 -->
+                    <img src="#" id="pic" />
+                    <!-- 图片出现后右上角关闭按钮 -->
+                    <span class="close" id="close">×</span>
                 </div>
             </div>
 
-            <input class="btn" type="submit" name="" value="发布">
+            <!-- 提交按钮 -->
+            <input class="btn" type="button" name="" value="发布" id="submit">
         </form>
 
         <!-- 书籍选择弹窗 -->
         <div class="mark">
             <ul class="list classes" id="classBox">
-                <li class="items clearfix">
+                <div class="items clearfix">
                     <span><i class="iconfont icon-star"></i><span>分</span>类：</span>
                     <div>
-                        <input type="text" name="" placeholder="请选择分类">
+                        <input type="text" name="" placeholder="请选择分类" capture="camera" accept="image/*">
                         <i class="iconfont icon-shouqi"></i>
                     </div>
-                </li>
+                </div>
                 <li><b></b>科教</li>
                 <li><b></b>人文</li>
                 <li class="active"><b></b>历史</li>
@@ -75,42 +83,16 @@
             </ul>
         </div>
 
+        <!-- 信息错误提示框 -->
+        <div class="errmark" id="errmark">
+            <div class="errinfo">
+                <h1>提示</h1>
+                <p>图片大小错误，请重新上传</p>
+                <p id="errbtn" class="btn">确 定</p>
+            </div>
+        </div>
     </div>
-
-
-    <link rel="stylesheet" href="js/publish.js">
-    <script type="text/javascript">
-        window.onload = function() {
-
-            // 书名选择 弹窗 显示赋值；
-            var box = document.getElementById('classBox'),
-                boxInput = box.getElementsByTagName('input')[0],
-                choose = document.getElementById('chooseBox'),
-                chooseInput = choose.getElementsByTagName('input')[0];
-            // 事件委托到li和Input;
-            box.addEventListener('click', function(e) {
-                var tagName = e.target.tagName.toLowerCase();
-                if (tagName == 'input') {
-                    // 防止点击第一行的“书名”两个字隐藏；
-                    e.stopPropagation();
-                    box.parentNode.style.display = 'none';
-                }
-                // 点击li隐藏弹窗 并赋值；
-                if (tagName == 'li') {
-                    box.parentNode.style.display = 'none';
-                    chooseInput.value = e.target.innerText;
-                }
-            });
-            // 点击显示书籍选择弹窗
-            chooseInput.onclick = function() {
-                box.parentNode.style.display = 'block';
-                // 弹窗inputvalue是展示的那个；
-                boxInput.value = chooseInput.value;
-            };
-            // 设置弹窗高度
-            box.style.top = choose.parentNode.offsetTop + 'px';
-        };
-    </script>
+    <script src="js/publish.js" charset="utf-8"></script>
 </body>
 
 </html>

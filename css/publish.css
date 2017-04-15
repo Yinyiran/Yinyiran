@@ -101,9 +101,8 @@ a {
   color: #b8b8b8;
   position: relative;
   border-radius: 6px;
-  overflow: hidden;
 }
-.uploadinfo .uploadimg span {
+.uploadinfo .uploadimg .add span {
   display: block;
   padding: 40% 0 10%;
   font-size: 2rem;
@@ -114,11 +113,32 @@ a {
 }
 .uploadinfo .uploadimg input {
   position: absolute;
-  display: block;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
+  z-index: 10;
+}
+.uploadinfo .uploadimg img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.uploadinfo .uploadimg .close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  text-align: center;
+  line-height: 24px;
+  z-index: 20;
+  display: none;
 }
 .btn {
   position: absolute;
@@ -171,6 +191,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .errmark .errinfo {
