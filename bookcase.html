@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>书架</title>
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/select.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 发布轨迹 -->
+        <div class="publish clearfix">
+            <!-- 最近阅读的一本书 -->
+            <div class="latest">
+                <div class="imgbox">
+                    <img src="img/bookface.jpg" alt="">
+                </div>
+            </div>
+            <div class="details">
+                <h5>三生三世十里桃花</h5>
+                <p class="barbox clearfix">
+                    <i class="bar" style="width:50%"></i>
+                </p>
+                <p>已读<span>50</span>%</p>
+                <p>连续读书<span>15</span>天</p>
+            </div>
+            <div class="rank">
+                <h1><span>15</span>名</h1>
+                <a href="publish-dynamic.html">
+                    <div class="btn">发布图书轨迹</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 书架列表 -->
+        <div class="recommend clearfix">
+            <h3><a href="javascript:;"><i></i>在读书单</a></h3>
+            <div class="row clearfix">
+                <!-- 未读 -->
+                <div class="item">
+                    <a href="publish-dynamic.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p class="reading red"><i></i><span>未读</span></p>
+                    </a>
+                </div>
+                <div class="item empty">
+                    <div class="img">
+                        <p>空书架 <span></span></p>
+                        <a href="books-select.html">
+                            <div class="btn">添加图书</div>
+                        </a>
+                    </div>
+                </div>
+                <!-- 未读 -->
+                <div class="item">
+                    <a href="publish-dynamic.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p class="reading red"><i></i><span>未读</span></p>
+                    </a>
+                </div>
+                <!-- 已读50% -->
+                <div class="item">
+                    <a href="publish-dynamic.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p class="reading blue"><i></i>已读 50%</p>
+                    </a>
+                </div>
+                <!-- 已读完 -->
+                <div class="item">
+                    <a href="publish-dynamic.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p class="reading green"><i></i>已读完</p>
+                    </a>
+                </div>
+                <!-- <div class="item-bg"></div> -->
+                <div class="additem">
+                    <a href="books-select.html">
+                        <i class="iconfont icon-add"></i>
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- 底部按钮 -->
+    <div class="btns">
+        <ul>
+            <li class="active">
+                <a href="javascript:;">
+                    <i class="iconfont icon-books_pre"></i>
+                    <span>书架</span>
+                </a>
+            </li>
+            <li>
+                <a href="books-select.html">
+                    <i class="iconfont icon-library_nor"></i>
+                    <span>精选</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont icon-share_nor"></i>
+                    <span>动态</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont icon-account_nor"></i>
+                    <span>账户</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

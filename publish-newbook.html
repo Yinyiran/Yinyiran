@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布新书</title>
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/publish.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <form class="" action="" method="post">
+            <div class="items clearfix">
+                <span><i class="iconfont icon-star"></i><span>书</span>名：</span>
+                <input type="text" name="" placeholder="请输入书名">
+            </div>
+            <div class="items clearfix">
+                <span><i class="iconfont icon-star"></i><span>作</span>者：</span>
+                <input type="text" name="" placeholder="请输入作者">
+            </div>
+            <div class="items clearfix">
+                <span><i class="iconfont icon-star"></i><span>分</span>类：</span>
+
+                <div id="chooseBox" class="clearfix">
+                    <input type="text" name="" placeholder="请选择分类" readonly="true">
+                    <i class="iconfont icon-zhankai"></i>
+                </div>
+            </div>
+            <div class="items clearfix">
+                <span><i class="iconfont icon-star"></i><span>页</span>书：</span>
+                <input type="text" name="" placeholder="请输入页数">
+            </div>
+            <div class="items clearfix">
+                <span><i></i>出版社：</span>
+                <input type="text" name="" placeholder="请输入出版社">
+            </div>
+            <div class="items clearfix">
+                <span><i class="iconfont icon-star"></i>ISBN：</span>
+                <input type="text" name="" placeholder="请输入ISBN编码">
+            </div>
+
+
+            <!-- 输入简介 -->
+            <div class="uploadinfo">
+                <textarea name="" placeholder="说点什么吧"></textarea>
+                <div class="uploadimg" id="uploadimg">
+                    <input type="file" name="img" />
+                    <span class="iconfont icon-add"></span>
+                    <p>上传封面</p>
+                </div>
+            </div>
+
+            <input class="btn" type="submit" name="" value="发布">
+        </form>
+
+        <!-- 书籍选择弹窗 -->
+        <div class="mark">
+            <ul class="list classes" id="classBox">
+                <li class="items clearfix">
+                    <span><i class="iconfont icon-star"></i><span>分</span>类：</span>
+                    <div>
+                        <input type="text" name="" placeholder="请选择分类">
+                        <i class="iconfont icon-shouqi"></i>
+                    </div>
+                </li>
+                <li><b></b>科教</li>
+                <li><b></b>人文</li>
+                <li class="active"><b></b>历史</li>
+                <li><b></b>教育</li>
+                <li><b></b>励志</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <link rel="stylesheet" href="js/publish.js">
+    <script type="text/javascript">
+        window.onload = function() {
+
+            // 书名选择 弹窗 显示赋值；
+            var box = document.getElementById('classBox'),
+                boxInput = box.getElementsByTagName('input')[0],
+                choose = document.getElementById('chooseBox'),
+                chooseInput = choose.getElementsByTagName('input')[0];
+            // 事件委托到li和Input;
+            box.addEventListener('click', function(e) {
+                var tagName = e.target.tagName.toLowerCase();
+                if (tagName == 'input') {
+                    // 防止点击第一行的“书名”两个字隐藏；
+                    e.stopPropagation();
+                    box.parentNode.style.display = 'none';
+                }
+                // 点击li隐藏弹窗 并赋值；
+                if (tagName == 'li') {
+                    box.parentNode.style.display = 'none';
+                    chooseInput.value = e.target.innerText;
+                }
+            });
+            // 点击显示书籍选择弹窗
+            chooseInput.onclick = function() {
+                box.parentNode.style.display = 'block';
+                // 弹窗inputvalue是展示的那个；
+                boxInput.value = chooseInput.value;
+            };
+            // 设置弹窗高度
+            box.style.top = choose.parentNode.offsetTop + 'px';
+        };
+    </script>
+</body>
+
+</html>

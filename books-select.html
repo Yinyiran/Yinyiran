@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>精选</title>
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <div class="search" id="search">
+                <input type="text" name="" placeholder="搜索你喜欢的书籍">
+                <span><img src="img/search-close.png" alt=""></span>
+            </div>
+            <a class="search-btn" href="search.html">搜索</a>
+        </div>
+        <!-- 学校推荐 图书列表 -->
+        <div class="recommend clearfix">
+            <h3><a href="books-list.html"><i></i>学校推荐 <span class="iconfont icon-enter"></span></a></h3>
+            <!-- 列表行 -->
+            <div class="row clearfix">
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="books-info.html">
+                        <div class="img">
+                            <img src="img/bookface.jpg" alt="">
+                        </div>
+                        <h5>三生三世十里桃花</h5>
+                        <p>作者：<span>七里香</span></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部按钮 -->
+    </div>
+    <div class="btns">
+        <ul>
+            <li>
+                <a href="bookcase.html">
+                    <i class="iconfont icon-books_nor"></i>
+                    <span>书架</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:;">
+                    <i class="iconfont icon-library_pre"></i>
+                    <span>精选</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont icon-share_nor"></i>
+                    <span>动态</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont icon-account_nor"></i>
+                    <span>账户</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var search = document.getElementById('search'),
+                input = search.getElementsByTagName('input')[0];
+                input.onfocus = function functionName() {
+                    window.location.href = "search.html";
+                };
+        };
+    </script>
+</body>
+
+</html>

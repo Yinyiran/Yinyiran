@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- logo -->
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+
+        <form class="" action="index.html" method="post">
+            <!-- 账号 -->
+            <div class="inputbox">
+                <span>账号</span>
+                <input type="text" name="" placeholder="请输入账号">
+            </div>
+
+            <!-- 密码 -->
+            <div class="inputbox">
+                <span>密码</span>
+                <input type="text" name="" placeholder="请输入密码">
+            </div>
+            <input class="login" type="submit" name="" value="登&nbsp;录">
+        </form>
+
+
+        <!-- 登录信息错误提示框 -->
+        <div class="errmark" id="errmark">
+            <div class="errinfo">
+                <h1>提示</h1>
+                <p>账号或密码错误，请重新输入</p>
+                <p id="errbtn" class="btn">确 定</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var errmark = document.getElementById('errmark'),
+                errbtn = errmark.getElementsByClassName('btn')[0];
+            errbtn.onclick = function () {
+                errmark.style.display = "none";
+            };
+        };
+    </script>
+
+</body>
+</html>
