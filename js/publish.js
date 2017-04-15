@@ -44,11 +44,12 @@ submit.onclick = function() {
 
 
 // 上传图片
-var upload = document.getElementById('upload'), //上传
+var upload = document.getElementById('upload'), //上传input
     pic = document.getElementById('pic'), //图片
     addBox = document.getElementById('add'), //空图片样式
-    maxsize = 100 * 1024, //超过100k进行压缩
+    maxsize = 50 * 1024, //超过100k进行压缩
     minSrc = ''; //
+
 if (typeof(FileReader) === 'undefined') {
     alert("抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！");
     upload.setAttribute('disabled', 'disabled');
@@ -57,21 +58,24 @@ upload.addEventListener('change', function() {
     addBox.style.display = 'none';
     pic.style.display = 'block';
     close.style.display = 'block';
+
     var file = this.files[0],
         result = '',
         reader = new FileReader();
     if (file) {
         pic.setAttribute('src', 'img/loading.gif');
     }
+    // 将图片转64码
     reader.readAsDataURL(file);
     reader.onload = function(e) {
         var v = 　this.result; //获取到base64的图片
+
         img = new Image();
         img.src = v;
         //大于100k图片进行压缩
         if (v.length >= maxsize) {
             img.onload = function() {
-                minSrc = compress(img, 600, 10);
+                minSrc = compress(img, 100, 1);
                 pic.setAttribute('src', minSrc);
                 //ajax minSrc
             };
@@ -85,7 +89,7 @@ upload.addEventListener('change', function() {
 // 图片压缩函数
 function compress(sourceImg, proportion, quality) {
     var area = sourceImg.width * sourceImg.height, //源图片的总大小
-        height = sourceImg.height * proportion,
+        height = sourceImg.height * proportion, //要锁后的目标尺寸
         width = sourceImg.width * proportion,
         compressCvs = document.createElement('canvas'); //压缩的图片画布
     //压缩的图片配置宽高
@@ -110,9 +114,10 @@ function compress(sourceImg, proportion, quality) {
     } else {
         compressCtx.drawImage(sourceImg, 0, 0, sourceImg.width, sourceImg.height, 0, 0, width, height);
     }
-    var newUrl = compressCvs.toDataURL('image/jpeg', quality / 100);
+    var newUrl = compressCvs.toDataURL('image/jpeg', quality / 20);
     return newUrl;
 }
+
 
 
 // 点击关闭按钮
