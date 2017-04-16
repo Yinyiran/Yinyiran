@@ -105,11 +105,11 @@ a {
 .uploadinfo .uploadimg .add span {
   display: block;
   padding: 40% 0 10%;
-  font-size: 2rem;
+  font-size: 30px;
 }
-.uploadinfo .uploadimg p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
+.uploadinfo .uploadimg .add p {
+  margin: 0;
+  font-size: 15px;
 }
 .uploadinfo .uploadimg input {
   position: absolute;
