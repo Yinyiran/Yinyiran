@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>必读书单</title>
+    <style media="screen">
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+        }
+
+        .header {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-size: 1.2rem;
+            color: #585858;
+            width: 100%;
+        }
+
+        .header li {
+            float: left;
+            text-align: center;
+            margin: 0 10%;
+            height: 3.2rem;
+            padding: 0;
+            list-style: none;
+            line-height: 3rem;
+            width: 30%;
+            border-bottom: 0.16rem solid #FFF;
+        }
+
+        .header .active {
+            color: #4d9eff;
+            border-bottom: 0.16rem solid #4d9eff;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        @media only screen {
+            html {
+                font-size: 30px;
+            }
+        }
+
+        @media only screen and (max-width: 479px) and (min-width: 321px) {
+            html {
+                font-size: 15px;
+            }
+        }
+
+        @media only screen and (max-width: 320px) {
+            html {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content" id="content">
+        <ul class="header">
+            <li class="active">上学期</li>
+            <li>下学期</li>
+        </ul>
+        <img src="#" alt="">
+    </div>
+
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var content = document.getElementById('content'),
+                ul = content.getElementsByTagName('ul')[0],
+                lis = ul.getElementsByTagName('li'),
+                img = content.getElementsByTagName('img')[0];
+
+            var grade = 'img/grade' + 3;
+
+            img.src = grade + "-1" + ".jpg";
+            ul.addEventListener('click', function(e) {
+                if (e.target.tagName.toLowerCase() == 'li') {
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].index = i + 1;
+                        lis[i].className = '';
+                    }
+                    e.target.className = 'active';
+                    img.src = grade + "-" + e.target.index + ".jpg";
+                }
+            });
+        };
+    </script>
+
+</body>
+
+</html>
