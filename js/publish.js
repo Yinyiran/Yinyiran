@@ -48,7 +48,7 @@ var upload = document.getElementById('upload'), //上传input
     pic = document.getElementById('pic'), //图片
     addBox = document.getElementById('add'), //空图片样式
     close = document.getElementById('close'),
-    maxsize = 50 * 1024, //超过50k进行压缩
+    maxsize = 50 * 1024, //超过100k进行压缩
     minSrc = ''; //
 
 
@@ -62,36 +62,33 @@ upload.addEventListener('change', function() {
     pic.style.display = 'block'; // 图片标签显示
     close.style.display = 'block'; // 右上角关闭按钮显示
 
-    var file = this.files[0], // 获取的上环文件
+    var file = this.files[0],
         result = '',
-        reader = new FileReader(); //调用H5文件调用函数
-    // 判断上传文件的类型，如果不是就停止函数
-    if (!/\/(?:jpeg|png|gif)/i.test(file.type)){
-        errmark.style.display = 'block';
-        hide(); // 按钮和图片隐藏
-        return;
-    }
+        reader = new FileReader();
     if (file) { // 如果有文件就添加背景加载动画图；
         pic.setAttribute('src', 'img/loading.gif');
     }else { // 没有文件传过来就退出函数
         return;
     }
-    reader.readAsDataURL(file); //将文件读取为 DataURL 64位编码
-    reader.onload = function(e) { // 文件读取成功完成时触发
-        var v = 　this.result, // reader.result 获取到base64的图片
-            img = new Image(); // 创建图片对象
-            img.src = v;
+    reader.readAsDataURL(file);
+    // console.log(reader.readAsDataURL(file));
+    reader.onload = function(e) {
+        var v = 　this.result; //获取到base64的图片
 
-        //大于maxsize图片进行压缩
+        img = new Image();
+        img.src = v;
+
+
+        //大于100k图片进行压缩
         if (v.length >= maxsize) {
-            console.log(v.length); // 图片原大小
-
-            img.onload = function() { // 图片加载完成之后再执行函数
-                minSrc = compress(img); // compress函数获得压缩后的64位数据；
-                pic.setAttribute('src', minSrc); // 图片路径；
+            console.log(v.length);
+            console.log(maxsize);
+            img.onload = function() {
+                minSrc = compress(img);
+                pic.setAttribute('src', minSrc);
                 //ajax minSrc
             };
-        } else { // 如果小于50k 那么就直接赋值；
+        } else {
             pic.setAttribute('src', v);
             //ajax v
         }
@@ -99,17 +96,16 @@ upload.addEventListener('change', function() {
 });
 
 
-// 图片压缩函数
 function compress(img) {
-    var initSize = img.src.length,
-        width = img.width,
-        height = img.height,
+    var initSize = img.src.length;
+    var width = img.width;
+    var height = img.height;
     //    用于压缩图片的canvas
-        canvas = document.createElement("canvas"),
-        ctx = canvas.getContext('2d'),
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext('2d');
     //    瓦片canvas
-        tCanvas = document.createElement("canvas"),
-        tctx = tCanvas.getContext("2d");
+    var tCanvas = document.createElement("canvas");
+    var tctx = tCanvas.getContext("2d");
 
     //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
     var ratio;
@@ -120,14 +116,13 @@ function compress(img) {
     } else {
         ratio = 1;
     }
-
-    //如果图片像素大于100万则使用瓦片绘制 iso下问题；
+    //如果图片像素大于100万则使用瓦片绘制
     var count;
     if ((count = width * height / 1000000) > 1) {
-        count = Math.sqrt(count) + 1; //计算要分成多少块瓦片
-        // 计算每块瓦片的宽和高
-        var nw = width / count;
-        var nh = height / count;
+        count = ~~(Math.sqrt(count) + 1); //计算要分成多少块瓦片
+        //            计算每块瓦片的宽和高
+        var nw = ~~(width / count);
+        var nh = ~~(height / count);
 
         canvas.width = nw;
         canvas.height = nh;
@@ -135,6 +130,7 @@ function compress(img) {
         for (var i = 0; i < count; i++) {
             for (var j = 0; j < count; j++) {
                 tctx.drawImage(img, i * nw * ratio, j * nh * ratio, nw * ratio, nh * ratio, 0, 0, nw, nh);
+
                 ctx.drawImage(canvas, i * nw, j * nh, nw, nh);
             }
         }
@@ -142,33 +138,24 @@ function compress(img) {
         ctx.drawImage(img, 0, 0, width, height);
     }
 
-
     canvas.width = width;
     canvas.height = height;
-    //铺底色 防止图片变黑
+    //铺底色
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, width, height);
-
-
     //进行最小压缩
     var ndata = canvas.toDataURL("image/jpeg", 0.1);
     canvas.width = canvas.height = 0;
-    console.log(ndata.length);
     return ndata;
 }
 
 
-
-
-
 // 点击关闭按钮
 close.onclick = function() {
-    hide();
-};
-function hide() {
+    // window.location.reload();
     pic.style.display = 'none';
     pic.src = '#';
     addBox.style.display = 'block';
-    close.style.display = "none";
-}
+    this.style.display = "none";
+};
